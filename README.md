@@ -1,12 +1,23 @@
 # [API Assignment - Tests](https://gitlab.com/test-star/markus.thulin/api-assignment-tests)
 ## API Tests for the Todo Application
-###  Build
+### How to use (locally)
+####  Build
 ```bash
 docker build -t todoapitests .
 ```
-### Run
+#### Run
 ```bash
 docker run -dit --name todoapitests todoapitests
+```
+
+### How to use (jenkins/local registry)
+####  Build
+```bash
+docker build -t localhost:5050/todoapitests .
+```
+#### Push to local registry
+```bash
+docker push localhost:5050/todoapitests
 ```
 
 © Markus Thulin 2019-
