@@ -13,11 +13,11 @@ docker run -dit --name todoapitests todoapitests
 ### How to use (jenkins/local registry)
 ####  Build
 ```bash
-docker build -t localhost:5050/todoapitests .
+docker build -t localhost:5000/todoapitests .
 ```
 #### Push to local registry
 ```bash
-docker push localhost:5050/todoapitests
+docker push localhost:5000/todoapitests
 ```
 
 © Markus Thulin 2019-
