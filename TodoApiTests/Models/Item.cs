@@ -1,4 +1,4 @@
-﻿namespace TodoApiTests.Models
+namespace TodoApiTests.Models
 {
     public class Item
     {
