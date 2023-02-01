@@ -10,7 +10,7 @@ namespace TodoApiTests
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            client = new RestClient("http://localhost:8080/api/todo/");
+            client = new RestClient("http://host.docker.internal:8080/api/todo/");
         }
     }
 }

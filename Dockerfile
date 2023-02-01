@@ -9,10 +9,6 @@ RUN dotnet restore
 # copy everything else and build app
 COPY TodoApiTests/. ./TodoApiTests/
 WORKDIR /app/TodoApiTests
-RUN dotnet build
-
-# Build runtime image
-# FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
-# WORKDIR /app
-# COPY --from=build-env app/TodoApi/out ./
-# ENTRYPOINT ["dotnet", "TodoApi.dll"]
+RUN dotnet publish -c Release -o out
+WORKDIR /app/TodoApiTests/out
+ENTRYPOINT ["dotnet", "vstest", "TodoApiTests.dll", "--logger:trx"]
