@@ -2,11 +2,11 @@
 ## API Tests for the Todo Application
 ###  Build
 ```bash
-docker build -t aspnetapptests .
+docker build -t todoapitests .
 ```
 ### Run
 ```bash
-docker run -dit --name aspnetapptests aspnetapptests
+docker run -dit --name todoapitests todoapitests
 ```
 
 © Markus Thulin 2019-
