@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
-using System;
 using System.Net;
 using TodoApiTests.Models;
 
@@ -13,18 +12,18 @@ namespace TodoApiTests
         [Test]
         public void StatusCodeTestHappyPathGET()
         {
-            RestRequest request = new RestRequest("", Method.Get);
+            RestRequest request = new("", Method.Get);
             RestResponse response = client.Execute(request);
-            //var result = JsonConvert.DeserializeObject<Item>(response.Content);
+            //var result = JsonConvert.DeserializeObject<List<Item>>(response.Content);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
         [Test]
         public void StatusCodeTestUnHappyPathGET()
         {
-            RestRequest request = new RestRequest("/error", Method.Get);
+            RestRequest request = new("/error", Method.Get);
             RestResponse response = client.Execute(request);
-            //var result = JsonConvert.DeserializeObject<Item>(response.Content);
+            //var result = JsonConvert.DeserializeObject<List<Item>>(response.Content);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
         }
 
@@ -32,15 +31,15 @@ namespace TodoApiTests
         [Test]
         public void ContentTypeTestHappyPathGET()
         {
-            RestRequest request = new RestRequest("", Method.Get);
+            RestRequest request = new("", Method.Get);
             RestResponse response = client.Execute(request);
             Assert.That(response.ContentType, Is.EqualTo("application/json"));
         }
-        
+
         [Test]
-        public void ContentTypeTestUmHappyPathGET()
+        public void ContentTypeTestUnHappyPathGET()
         {
-            RestRequest request = new RestRequest("/error", Method.Get);
+            RestRequest request = new("/error", Method.Get);
             RestResponse response = client.Execute(request);
             Assert.That(response.ContentType, Is.EqualTo("application/problem+json"));
         }
@@ -48,7 +47,7 @@ namespace TodoApiTests
         [Test]
         public void GetDefaultTask()
         {
-            RestRequest request = new RestRequest("/1", Method.Get);
+            RestRequest request = new("/1", Method.Get);
             RestResponse response = client.Execute(request);
             var result = JsonConvert.DeserializeObject<Item>(response.Content);
             Assert.That(result.Id, Is.EqualTo(1));
@@ -58,20 +57,20 @@ namespace TodoApiTests
         [Test]
         public void AddAndDeleteTask()
         {
-            Random rnd = new Random();
+            Random rnd = new();
             int randomId = rnd.Next();
-            Item item = new Item()
+            Item item = new()
             {
                 Id = randomId,
                 Name = "RandomTask",
                 IsComplete = false
             };
             string jsonToSend = JsonConvert.SerializeObject(item);
-            RestRequest request = new RestRequest("", Method.Post);
+            RestRequest request = new("", Method.Post);
             request.AddParameter("application/json", jsonToSend, ParameterType.RequestBody);
             RestResponse response = client.Execute(request);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
-            RestRequest request1 = new RestRequest($"/{randomId}", Method.Delete);
+            RestRequest request1 = new($"/{randomId}", Method.Delete);
             RestResponse response1 = client.Execute(request1);
             Assert.That(response1.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
 
