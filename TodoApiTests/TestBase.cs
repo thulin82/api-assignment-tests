@@ -1,9 +1,6 @@
-using NUnit.Framework;
-using RestSharp;
-
 namespace TodoApiTests
 {
-    public class BaseTest
+    public class TestBase
     {
         protected RestClient client;
 

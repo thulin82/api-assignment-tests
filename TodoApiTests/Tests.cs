@@ -1,13 +1,11 @@
 using Newtonsoft.Json;
-using NUnit.Framework;
-using RestSharp;
 using System.Net;
 using TodoApiTests.Models;
 
 namespace TodoApiTests
 {
     [TestFixture]
-    public class Tests : BaseTest
+    public class Tests : TestBase
     {
         [Test]
         public void StatusCodeTestHappyPathGET()
