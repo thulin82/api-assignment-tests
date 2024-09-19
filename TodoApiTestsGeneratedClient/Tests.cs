@@ -1,5 +1,3 @@
-using NUnit.Framework.Internal;
-
 namespace TodoApiTestsGeneratedClient;
 
 public class Tests : TestBase
