@@ -1,16 +1,15 @@
-namespace TodoApiTestsGeneratedClient
-{
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
+namespace TodoApiTestsGeneratedClient;
 
-        [Test]
-        public void Test()
-        {
-            Assert.Pass();
-        }
+public class Tests
+{
+    [SetUp]
+    public void Setup()
+    {
+    }
+
+    [Test]
+    public void Test()
+    {
+        Assert.Pass();
     }
 }
